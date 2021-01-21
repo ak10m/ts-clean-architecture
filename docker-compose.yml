@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+
+  ci:
+    build:
+      context: .
+      dockerfile: .docker/node/Dockerfile
+    volumes:
+      - .:/src
+      - node_modules:/src/node_modules
+    command: "npx tsc --watch"
+
+volumes:
+  node_modules:
+    driver: local
